@@ -1,7 +1,8 @@
+use termion::{terminal_size};
 use image::{GenericImageView, imageops::FilterType};
 
 fn to_ascii(image: &image::DynamicImage) -> String {
-    let ascii_chars = "-_+~<>i!lI;:,\"^`'.                        ";
+    let ascii_chars = "$@B%8WM#*oahkbdpqwmZO0QCJYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'.";
     let ascii_chars = ascii_chars.chars().rev().collect::<Vec<_>>();
     let ascii_scale = ascii_chars.len() as f32;
 
@@ -21,7 +22,8 @@ fn to_ascii(image: &image::DynamicImage) -> String {
 
 fn main() {
     let img = image::open("cat.jpeg").unwrap();
-    let img = img.resize(200, 70, FilterType::CatmullRom);
+    let (width,height)=terminal_size().unwrap();
+    let img = img.resize(width as u32, height as u32, FilterType::CatmullRom);
     let ascii_art = to_ascii(&img);
     println!("{}", ascii_art);
 }

@@ -2,7 +2,7 @@ use termion::terminal_size;
 use image::{GenericImageView, imageops::FilterType};
 use opencv::{core, imgcodecs, prelude::*, types::VectorOfu8, videoio, Error};
 fn to_ascii(image: &image::DynamicImage) -> String {
-    let ascii_chars = "                  $@B%8WM#*oahkbdpqwmZO0QCJYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'.";
+    let ascii_chars = "    $@B%8WM#*oahkbdpqwmZO0QCJYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'.";
     let ascii_chars = ascii_chars.chars().rev().collect::<Vec<_>>();
     let ascii_scale = ascii_chars.len() as f32;
 
